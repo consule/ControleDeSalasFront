@@ -1,0 +1,167 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand">Controle de Salas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+      </li> -->
+            <li class="nav-item">
+                <a routerLink="../salas">Salas</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="../dashboard">DashBoard</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <!-- <h1>Controle De Salas</h1> -->
+    </div>
+    <i class="fas fa-sync-alt"></i>
+    <div class="row text-center">
+        <div class="col-md-6">
+            <h4 class="text-info"> Salas disponiveis</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Numero Sala: 34 - capacidade 12 </li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetu r ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-danger">Salas Agendadas</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="novoAgendamentoDeSala" tabindex="-1" role="dialog"
+        aria-labelledby="novoAgendamentoDeSalaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoAgendamentoDeSalaLabel">Novo Agendamento de Salas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        <!-- Este combo recupera as salas -->
+                        <div class="form-group">
+                            <label for="sala"><strong>Escolha uma Sala</strong> </label>
+                            <select class="form-control" id="sala">
+                                <option>Sala 1 - Capacidade: 45 pessoas</option>
+                                <option>Sala 1 - Capacidade: 45 pessoas</option>
+                                <option>Sala 1 - Capacidade: 45 pessoas</option>
+                                <option>Sala 1 - Capacidade: 45 pessoas</option>
+                                <option>Sala 1 - Capacidade: 45 pessoas</option>
+                            </select>
+                        </div>
+
+                        <!-- Título do Agendamento de sala -->
+                        <div class="form-group">
+                            <label for="titulo">Título </label>
+                            <input type="text" name="titulo" class="form-control" id="titulo"
+                                placeholder="Exemplo: Definição de projeto">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Data e Hora Final -->
+                                <div class="form-group">
+                                    <label for="data-hora-inicial">Data e Hora Inicial </label>
+                                    <input type="datetime-local" name="data-hora-inicial" class="form-control"
+                                        id="data-hora-inicial" placeholder="Exemplo: Definição de projeto">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Data e Hora Final -->
+                                <div class="form-group">
+                                    <label for="data-hora-final">Data e Hora Final </label>
+                                    <input type="datetime-local" name="data-hora-final" class="form-control"
+                                        id="data-hora-final" placeholder="Exemplo: Definição de projeto">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Mensagens caso haja agendamentos existentes conforme período informado -->
+
+                    <div class="alert alert-warning" role="alert">
+                        Para a sala selecionada existe um ou mais agendamentos
+                    </div>
+                    <h5 class="text-info text-center">Salas Agendadas</h5>
+                    <table class="table table-bordered table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sala</th>
+                                <th scope="col">Data e Hora Inicial</th>
+                                <th scope="col">Data e Hora Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>34</td>
+                                <td>23/11/2020 14:00</td>
+                                <td>23/11/2020 17:00</td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>23/11/2020 14:00</td>
+                                <td>23/11/2020 17:00</td>
+                            </tr>
+                            <tr>
+                                <td>34</td>
+                                <td>23/11</td>
+                                <td>14:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
