@@ -10,11 +10,11 @@
             <!-- <li class="nav-item active">
         <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
       </li> -->
-            <li class="nav-item">
-                <a routerLink="../salas">Salas</a>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="../salas">Salas</a>
             </li>
-            <li class="nav-item">
-                <a routerLink="../dashboard">DashBoard</a>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="../dashboard">DashBoard</a>
             </li>
 
         </ul>
@@ -27,11 +27,11 @@
         <div class="form-group">
             <label for="sala"><strong>Escolha uma Sala</strong> </label>
             <select class="form-control" id="sala">
-                <option>Sala 1 - Capacidade: 45 pessoas</option>
-                <option>Sala 1 - Capacidade: 45 pessoas</option>
-                <option>Sala 1 - Capacidade: 45 pessoas</option>
-                <option>Sala 1 - Capacidade: 45 pessoas</option>
-                <option>Sala 1 - Capacidade: 45 pessoas</option>
+
+                <option *ngFor="let sala of salaModel" value="{{ sala.id}}">{{ sala.nome }} - Capacidade:
+                    {{ sala.capacidade }}
+                </option>
+
             </select>
         </div>
 

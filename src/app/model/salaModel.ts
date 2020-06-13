@@ -1,4 +1,4 @@
-export interface Sala {
+export interface SalaModel {
     id: number,
     nome: string,
     capacidade: number,
