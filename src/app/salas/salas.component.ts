@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Sala } from '../model/sala';
+import { SalaModel } from '../model/salaModel';
 import { SalasService } from '../services/Salas.service';
 
 
@@ -14,11 +14,13 @@ export class SalasComponent implements OnInit {
 
   }
 
-  salaModel: Sala[];
+  salaModel: SalaModel[];
 
   ngOnInit() {
+
     this.salaSevice.getSala().subscribe(res => {
       this.salaModel = res;
+      console.log(res);
     });
   }
 

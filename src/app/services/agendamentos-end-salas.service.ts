@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { SalaModel } from '../model/salaModel';
+import { AgendamentosEndSalasModel } from '../model/agendamentosEndSalasModel';
 
-const apiUrl = 'http://localhost:52611/api/Salas';
+const apiUrl = 'http://localhost:52611/api/AgendamentosEndSalas';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,15 +13,15 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class SalasService {
+export class AgendamentosEndSalasService {
 
   constructor(private http: HttpClient) { }
 
-  getSala(): Observable<SalaModel[]> {
-    return this.http.get<SalaModel[]>(apiUrl)
+  getAgendamentosEndSalas(): Observable<AgendamentosEndSalasModel[]> {
+    return this.http.get<AgendamentosEndSalasModel[]>(apiUrl)
       .pipe(
-        tap(sala => console.log('leu os produtos')),
-        catchError(this.handleError('getSala', []))
+        tap(sala => console.log('leu os AgendamentosEndSalasModel')),
+        catchError(this.handleError('getAgendamentosEndSalas', []))
       );
   }
 
@@ -31,5 +31,4 @@ export class SalasService {
       return of(result as T);
     };
   }
-
 }

@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ControleDeSalasFront"
+    }
+  },
+  "defaultProject": "ControleDeSalasFront",
+  "cli": {
+    "analytics": false
+  }
 }
