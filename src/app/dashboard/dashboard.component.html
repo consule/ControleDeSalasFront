@@ -1,71 +1,28 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Controle de Salas</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item active">
-        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
-      </li> -->
-            <li class="nav-item">
-                <a routerLink="../salas">Salas</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="../dashboard">DashBoard</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-
-
 <main role="main" class="container">
 
-    <div class="starter-template">
+    <div class="dashboard">
         <!-- <h1>Controle De Salas</h1> -->
     </div>
     <i class="fas fa-sync-alt"></i>
     <div class="row text-center">
         <div class="col-md-6">
-            <h4 class="text-info"> Salas disponiveis</h4>
+            <h4 class="text-info"> Salas disponíveis</h4>
             <ul class="list-group">
-                <li class="list-group-item">Numero Sala: 34 - capacidade 12 </li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetu r ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <ng-container *ngFor="let agendamentos of agendamentosEndSalasModel">
+                    <li *ngIf="agendamentos.idSala == 0" class="list-group-item">Sala: {{ agendamentos.nomeSala }} -
+                        Capacidade: {{ agendamentos.capacidadeSala}} </li>
+                </ng-container>
             </ul>
         </div>
         <div class="col-md-6">
             <h4 class="text-danger">Salas Agendadas</h4>
             <ul class="list-group">
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <ng-container *ngFor="let agendamentos of agendamentosEndSalasModel">
+                    <li *ngIf="agendamentos.idSala != 0" class="list-group-item">Sala: {{ agendamentos.nomeSala }} -
+                        Capacidade: {{ agendamentos.capacidadeSala}}
+                    </li>
+                </ng-container>
+
             </ul>
         </div>
     </div>
