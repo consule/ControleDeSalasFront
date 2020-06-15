@@ -1,14 +1,19 @@
-# ControleDeSalasFront
+# Controle De Salas - FrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+Este projeto foi gerado com o [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
 
-## Development server
+## Servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Este projeto é composto de duas partes, sendo esta o frontEnd da aplicação. 
 
-## Code scaffolding
+## Executando o projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1 Clone o projeto com o comando (https://github.com/consule/ControleDeSalasFront.git) para uma pasta de sua preferencia. 
+2 Execute o comando `cd ControleDeSalasFront` para entrar na pasta que acabou de ser clonada
+2 Execute `ng serve` para um servidor dev. 
+3 Navegue até `http://localhost:4200/`. 
+
+O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
 ## Build
 
