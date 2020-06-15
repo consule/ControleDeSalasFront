@@ -18,9 +18,6 @@ export class InsereAgendamentoService {
   constructor(private http: HttpClient) { }
 
   insereAgendamentoDeSala(agendamento): Observable<insereAgendamentoModel[]> {
-
-    console.log(agendamento);
-    // return;
     return this.http.post<insereAgendamentoModel[]>(apiUrl, agendamento, httpOptions)
       .pipe(
         tap(agendamento => console.log('agendamento')),

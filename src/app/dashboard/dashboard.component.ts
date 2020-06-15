@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.agendamentosEndSalasService.getAgendamentosEndSalas().subscribe(res => {
       this.agendamentosEndSalasModel = res;
-      console.log(res);
     });
   }
 

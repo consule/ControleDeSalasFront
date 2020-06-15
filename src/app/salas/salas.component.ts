@@ -7,9 +7,6 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
-@Pipe({
-  name: 'formatDate'
-})
 
 @Component({
   selector: 'app-salas',
@@ -33,16 +30,31 @@ export class SalasComponent implements OnInit {
 
   ngOnInit() {
     this.criarFormularioDeAgendamentoSala();
-
     this.salaSevice.getSala().subscribe(res => {
       this.salaModel = res;
     });
 
   }
-  insereAgendamentoSala() {
 
+  //Recupera agendamentos existentes 
+  getAgendamentosExistentes() {
     const dadosFormulario = this.formularioDeAgendamentoSala.value;
+    if ((Date.parse(dadosFormulario.dataHoraFinal)) < (Date.parse(dadosFormulario.dataHoraInicial))) {
+      alert('A data final não pode ser menor que a data inicial')
+      return false;
+    }
+    const ag: insereAgendamentoModel = {
+      idSala: parseInt(dadosFormulario.idSala),
+      dataHoraInicial: dadosFormulario.dataHoraInicial,
+      dataHoraFinal: dadosFormulario.dataHoraFinal
+    }
+    this.salaSevice.getAgendamentosExistentes(ag.idSala, ag.dataHoraInicial, ag.dataHoraFinal).subscribe(res => {
+      console.log(res);
+    });
+  }
 
+  insereAgendamentoSala() {
+    const dadosFormulario = this.formularioDeAgendamentoSala.value;
     if ((Date.parse(dadosFormulario.dataHoraFinal)) < (Date.parse(dadosFormulario.dataHoraInicial))) {
       alert('A data final não pode ser menor que a data inicial')
       return false;
@@ -53,16 +65,10 @@ export class SalasComponent implements OnInit {
       dataHoraInicial: dadosFormulario.dataHoraInicial,
       dataHoraFinal: dadosFormulario.dataHoraFinal
     }
-
-
-
     this.insereAgendamentoService.insereAgendamentoDeSala(ch).subscribe(sucesso => {
       console.log(sucesso);
     });
-
   }
-
-
 
   criarFormularioDeAgendamentoSala() {
     this.formularioDeAgendamentoSala = this.fb.group({
@@ -94,6 +100,4 @@ export class SalasComponent implements OnInit {
       ],
     });
   }
-
-
 }

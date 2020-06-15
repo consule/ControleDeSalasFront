@@ -1,6 +1,6 @@
 export interface insereAgendamentoModel {
     idSala: any,
-    titulo: string,
+    titulo?: string,
     dataHoraInicial: Date,
     dataHoraFinal: Date
 }
