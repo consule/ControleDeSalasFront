@@ -6,6 +6,7 @@ import { InsereAgendamentoService } from '../services/insere-agendamento.service
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { isEmpty } from 'rxjs/operators';
 
 
 @Component({
@@ -27,34 +28,37 @@ export class SalasComponent implements OnInit {
   salaModel: SalaModel[];
   insereAgendamentoModel: insereAgendamentoModel[];
 
-
   ngOnInit() {
     this.criarFormularioDeAgendamentoSala();
     this.salaSevice.getSala().subscribe(res => {
       this.salaModel = res;
     });
-
   }
 
   //Recupera agendamentos existentes 
-  getAgendamentosExistentes() {
-    const dadosFormulario = this.formularioDeAgendamentoSala.value;
-    if ((Date.parse(dadosFormulario.dataHoraFinal)) < (Date.parse(dadosFormulario.dataHoraInicial))) {
-      alert('A data final não pode ser menor que a data inicial')
-      return false;
-    }
-    const ag: insereAgendamentoModel = {
-      idSala: parseInt(dadosFormulario.idSala),
-      dataHoraInicial: dadosFormulario.dataHoraInicial,
-      dataHoraFinal: dadosFormulario.dataHoraFinal
-    }
-    this.salaSevice.getAgendamentosExistentes(ag.idSala, ag.dataHoraInicial, ag.dataHoraFinal).subscribe(res => {
-      console.log(res);
-    });
-  }
+  // getAgendamentosExistentes() {
+  //   const dadosFormulario = this.formularioDeAgendamentoSala.value;
+  //   if ((Date.parse(dadosFormulario.dataHoraFinal)) < (Date.parse(dadosFormulario.dataHoraInicial))) {
+  //     alert('A data final não pode ser menor que a data inicial')
+  //     return false;
+  //   }
+
+  //   const ch: insereAgendamentoModel = {
+  //     idSala: parseInt(dadosFormulario.idSala),
+  //     titulo: dadosFormulario.titulo,
+  //     dataHoraInicial: dadosFormulario.dataHoraInicial,
+  //     dataHoraFinal: dadosFormulario.dataHoraFinal
+  //   }
+
+  //   this.salaSevice.getAgendamentosExistentes(dadosFormulario.idSala, dadosFormulario.dataHoraInicial, dadosFormulario.dataHoraFinal).subscribe(res => {
+  //     this.insereAgendamentoModel = res;
+  //   });
+  // }
 
   insereAgendamentoSala() {
+
     const dadosFormulario = this.formularioDeAgendamentoSala.value;
+
     if ((Date.parse(dadosFormulario.dataHoraFinal)) < (Date.parse(dadosFormulario.dataHoraInicial))) {
       alert('A data final não pode ser menor que a data inicial')
       return false;
@@ -65,9 +69,36 @@ export class SalasComponent implements OnInit {
       dataHoraInicial: dadosFormulario.dataHoraInicial,
       dataHoraFinal: dadosFormulario.dataHoraFinal
     }
-    this.insereAgendamentoService.insereAgendamentoDeSala(ch).subscribe(sucesso => {
-      console.log(sucesso);
+
+    //   getDadosCorrecaoNaoFinalizadas() {
+    //   this.TerceiraCorrecaoDadosService.GetDadosCorrecaoNaoFinalizadas(this.idUsuario).subscribe(result => {
+    //     this.listaCorrecoesNaoFinalizadas = result;
+    //     //console.log(this.listaCorrecoesNaoFinalizadas)
+
+    //     if (this.listaCorrecoesNaoFinalizadas[0].length == 0) {
+    //       this.showBotaoFinalizar = false;
+    //     } else {
+    //       this.showBotaoFinalizar = true;
+    //     }
+    //   });
+    // }
+
+
+    ///  Se este não trouxer nada 
+    this.salaSevice.getAgendamentosExistentes(dadosFormulario.idSala, dadosFormulario.dataHoraInicial, dadosFormulario.dataHoraFinal).subscribe(res => {
+      this.insereAgendamentoModel = res;
+      if (this.insereAgendamentoModel.length == 0 || this.insereAgendamentoService == undefined) {
+        this.insereAgendamentoService.insereAgendamentoDeSala(ch).subscribe(sucesso => {
+          this.insereAgendamentoModel = sucesso;
+        });
+      } else {
+        this.insereAgendamentoModel = res;
+      }
     });
+
+
+
+    //this.ngOnInit();
   }
 
   criarFormularioDeAgendamentoSala() {
