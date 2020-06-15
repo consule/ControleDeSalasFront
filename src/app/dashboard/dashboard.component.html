@@ -9,8 +9,9 @@
             <h4 class="text-info"> Salas disponíveis</h4>
             <ul class="list-group">
                 <ng-container *ngFor="let agendamentos of agendamentosEndSalasModel">
-                    <li *ngIf="agendamentos.idSala == 0" class="list-group-item">Sala: {{ agendamentos.nomeSala }} -
-                        Capacidade: {{ agendamentos.capacidadeSala}} </li>
+                    <li *ngIf="agendamentos.idSala == 0" class="list-group-item">
+                        Sala: {{ agendamentos.nomeSala }} <br>
+                        Capacidade: {{ agendamentos.capacidadeSala}} pessoas </li>
                 </ng-container>
             </ul>
         </div>
@@ -18,9 +19,10 @@
             <h4 class="text-danger">Salas Agendadas</h4>
             <ul class="list-group">
                 <ng-container *ngFor="let agendamentos of agendamentosEndSalasModel">
-                    <li *ngIf="agendamentos.idSala != 0" class="list-group-item">Sala: {{agendamentos.titulo }} =
-                        {{ agendamentos.nomeSala }} -
-                        Capacidade: {{ agendamentos.capacidadeSala}}
+                    <li *ngIf="agendamentos.idSala != 0" class="list-group-item">
+                        Título Agendamento: {{agendamentos.titulo }} <br>
+                        Nome Sala: {{ agendamentos.nomeSala }} <br>
+                        Capacidade: {{ agendamentos.capacidadeSala}} pessoas
                     </li>
                 </ng-container>
 

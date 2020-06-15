@@ -4,15 +4,13 @@
         <div class=" form-group">
             <select formControlName="idSala" class="form-control">
                 <option value="">Selecione uma sala</option>
-                <option *ngFor="let sala of salaModel" value="{{ sala.id }}">{{ sala.nome }} -
-                    Capacidade:
-                    {{ sala.capacidade }}
+                <option *ngFor="let sala of salaModel" value="{{ sala.id }}">
+                    Nome: {{ sala.nome }} - Capacidade: {{ sala.capacidade }} pessoas
                 </option>
             </select>
         </div>
 
         <!-- Título do Agendamento de sala -->
-
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -21,10 +19,10 @@
                         placeholder="Exemplo: Definição de projeto">
                 </div>
             </div>
+            <!-- Data e Hora Inicial -->
             <div class="col-md-4">
-                <!-- Data e Hora Inicial -->
                 <div class="form-group">
-                    <label for="data-hora-inicial">Data Hora Inicial</label>
+                    <label for="data-hora-inicial">Data e Hora Inicial</label>
                     <input formControlName="dataHoraInicial" type="datetime-local" class="form-control"
                         id="data-hora-inicial">
                 </div>
@@ -33,7 +31,7 @@
             <!-- Data e Hora Final -->
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="data-hora-final">Data Final </label>
+                    <label for="data-hora-final">Data e Hora Final </label>
                     <input formControlName="dataHoraFinal" type="datetime-local" class="form-control"
                         id="data-hora-final">
                 </div>
@@ -48,8 +46,8 @@
 
     <!-- Mensagens caso haja agendamentos existentes conforme período informado -->
     <div *ngIf="insereAgendamentoModel" class="agendamento-existente">
-        <div class="alert alert-warning" role="alert">
-            Para a sala selecionada existe um ou mais agendamentos
+        <div class="alert alert-warning text-center" role="alert">
+            <strong> Para a sala selecionada existe um ou mais agendamentos </strong>
         </div>
         <h5 class="text-info text-center">Salas Agendadas</h5>
         <table class="table table-bordered table-striped text-center">
@@ -64,12 +62,11 @@
                 <ng-container *ngFor="let agendamentos of insereAgendamentoModel">
                     <tr>
                         <td>{{ agendamentos.idSala }} - {{ agendamentos.titulo }}</td>
-                        <td class="text-success">{{ agendamentos.dataHoraInicial }} </td>
-                        <td class="text-danger">{{ agendamentos.dataHoraFinal }}</td>
+                        <td class="text-success">{{ agendamentos.dataHoraInicial | date:'dd/MM/yyyy HH:mm' }} </td>
+                        <td class="text-danger">{{ agendamentos.dataHoraFinal | date:'dd/MM/yyyy HH:mm' }}</td>
                     </tr>
                 </ng-container>
             </tbody>
         </table>
-
     </div>
 </div>
