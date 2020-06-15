@@ -5,6 +5,7 @@ import { insereAgendamentoModel } from '../model/insereAgendamentoModel';
 import { InsereAgendamentoService } from '../services/insere-agendamento.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-salas',
@@ -13,16 +14,15 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class SalasComponent implements OnInit {
-
-  newDate = Date.now();
-  saveDate: any;
+  private readonly notifier: NotifierService;
   formularioDeAgendamentoSala: FormGroup;
 
   constructor(
-    private datePipe: DatePipe,
+    notifierService: NotifierService,
     private fb: FormBuilder,
     private salaSevice: SalasService,
     private insereAgendamentoService: InsereAgendamentoService) {
+    this.notifier = notifierService;
   }
 
   salaModel: SalaModel[];
@@ -33,6 +33,7 @@ export class SalasComponent implements OnInit {
     this.salaSevice.getSala().subscribe(res => {
       this.salaModel = res;
     });
+
   }
 
   // Insere um novo agendamento
@@ -54,6 +55,7 @@ export class SalasComponent implements OnInit {
       if (this.insereAgendamentoModel.length == 0 || this.insereAgendamentoService == undefined) {
         this.insereAgendamentoService.insereAgendamentoDeSala(ch).subscribe(sucesso => {
           this.insereAgendamentoModel = sucesso;
+          alert('Inserido Com SUcesso!');
         });
       } else {
         this.insereAgendamentoModel = res;
