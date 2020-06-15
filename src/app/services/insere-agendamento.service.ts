@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { SalaModel } from '../model/salaModel';
+import { insereAgendamentoModel } from '../model/insereAgendamentoModel';
 
-const apiUrl = 'http://localhost:52611/api/Salas';
+const apiUrl = 'http://localhost:52611/api/Agendamentos';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,15 +13,18 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class SalasService {
+export class InsereAgendamentoService {
 
   constructor(private http: HttpClient) { }
 
-  getSala(): Observable<SalaModel[]> {
-    return this.http.get<SalaModel[]>(apiUrl)
+  insereAgendamentoDeSala(agendamento): Observable<insereAgendamentoModel[]> {
+
+    console.log(agendamento);
+    // return;
+    return this.http.post<insereAgendamentoModel[]>(apiUrl, agendamento, httpOptions)
       .pipe(
-        tap(sala => console.log('leu os sala')),
-        catchError(this.handleError('getSala', []))
+        tap(agendamento => console.log('agendamento')),
+        catchError(this.handleError('insereAgendamentoDeSala', []))
       );
   }
 
