@@ -18,7 +18,8 @@
             <h4 class="text-danger">Salas Agendadas</h4>
             <ul class="list-group">
                 <ng-container *ngFor="let agendamentos of agendamentosEndSalasModel">
-                    <li *ngIf="agendamentos.idSala != 0" class="list-group-item">Sala: {{ agendamentos.nomeSala }} -
+                    <li *ngIf="agendamentos.idSala != 0" class="list-group-item">Sala: {{agendamentos.titulo }} =
+                        {{ agendamentos.nomeSala }} -
                         Capacidade: {{ agendamentos.capacidadeSala}}
                     </li>
                 </ng-container>
