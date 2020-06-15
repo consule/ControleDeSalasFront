@@ -1,6 +1,9 @@
 # Controle De Salas - FrontEnd
 
-Este projeto foi gerado com o [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+Este projeto foi gerado com:
+- [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+- [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/);
+- Validação de formulário com reactive form;
 
 ## Servidor de desenvolvimento
 
