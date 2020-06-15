@@ -5,6 +5,13 @@ Este projeto foi gerado com:
 - [Bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/);
 - Validação de formulário com reactive form;
 
+## Telas do Sistema:
+
+![alt text](https://github.com/consule/ControleDeSalasFront/blob/master/src/assets/salas.png?raw=true "Agendamento de Sala")
+![alt text](https://github.com/consule/ControleDeSalasFront/blob/master/src/assets/dashboard.png?raw=true "Painel de Salas Reservadas")
+![alt text](https://github.com/consule/ControleDeSalasFront/blob/master/src/assets/agendamentoExistente.png?raw=true "agendamento Existente")
+![alt text](https://github.com/consule/ControleDeSalasFront/blob/master/src/assets/agendamentoDeSalas.png?raw=true "Agendamento de Sala")
+
 ## Servidor de desenvolvimento
 
 Este projeto é composto de duas partes, sendo esta o frontEnd da aplicação. 
