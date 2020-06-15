@@ -5,6 +5,7 @@ Este projeto foi gerado com o [Angular CLI](https://github.com/angular/angular-c
 ## Servidor de desenvolvimento
 
 Este projeto é composto de duas partes, sendo esta o frontEnd da aplicação. 
+O BackEnd você encontra neste link: (https://github.com/consule/ControleDeSalasBackEnd)
 
 ## Executando o projeto
 
@@ -16,18 +17,8 @@ Este projeto é composto de duas partes, sendo esta o frontEnd da aplicação.
 
 O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-## Build
+## Atenção com as Services
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Você pode encontrar as services no caminho `ControleDeSalasFront\src\app\services`. Elas são o ponto de entrada  que alimentam a aplicação e exibem os dados. 
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Lembre-se sempre de conferir a porta de entrada existente (essa porta é gerada pelo FrontEnd(, e para facilitar existe uma variável em cada um desses arquivos com o nome `const apiUrl`
