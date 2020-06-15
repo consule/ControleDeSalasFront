@@ -31,4 +31,5 @@ O aplicativo será recarregado automaticamente se você alterar qualquer um dos 
 
 Você pode encontrar as services no caminho `ControleDeSalasFront\src\app\services`. Elas são o ponto de entrada  que alimentam a aplicação e exibem os dados. 
 
-Lembre-se sempre de conferir a porta de entrada existente (essa porta é gerada pelo FrontEnd(, e para facilitar existe uma variável em cada um desses arquivos com o nome `const apiUrl`.
+Lembre-se sempre de conferir a porta de entrada existente (essa porta é gerada pelo FrontEnd).
+Para facilitar existe uma variável em cada um desses arquivos com o nome `const apiUrl`.
