@@ -2,9 +2,9 @@
     <form [formGroup]="formularioDeAgendamentoSala" (ngSubmit)="insereAgendamentoSala()">
         <!-- Este combo recupera as salas -->
         <div class=" form-group">
-            <select formControlName="idSala" class="form-control">
+            <select formControlName="idSala" class="salas-disponiveis" class="form-control" (change)="limpaCampos(1)">
                 <option value="">Selecione uma sala</option>
-                <option *ngFor="let sala of salaModel" value="{{ sala.id }}">
+                <option *ngFor=" let sala of salaModel" value="{{ sala.id }}">
                     Nome: {{ sala.nome }} - Capacidade: {{ sala.capacidade }} pessoas
                 </option>
             </select>
@@ -70,3 +70,5 @@
         </table>
     </div>
 </div>
+
+<ngx-notifier></ngx-notifier>

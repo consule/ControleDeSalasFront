@@ -8,6 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotifierOptions, NotifierModule } from 'angular-notifier';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxNotifierModule } from 'ngx-notifier';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -52,12 +54,11 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     SalasComponent,
-    DashboardComponent
+    DashboardComponent,
 
   ],
   imports: [
@@ -67,7 +68,8 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     FormsModule,
     NotifierModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    NotifierModule.withConfig(customNotifierOptions),
+    BrowserAnimationsModule, NgxNotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]

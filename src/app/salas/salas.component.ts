@@ -3,26 +3,32 @@ import { SalaModel } from '../model/salaModel';
 import { SalasService } from '../services/Salas.service';
 import { insereAgendamentoModel } from '../model/insereAgendamentoModel';
 import { InsereAgendamentoService } from '../services/insere-agendamento.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NotifierService } from 'angular-notifier';
+import { NgxNotifierService } from 'ngx-notifier';
+
+
 
 @Component({
   selector: 'app-salas',
   templateUrl: './salas.component.html',
   styleUrls: ['./salas.component.css'],
-  providers: [DatePipe]
+  providers: []
 })
 export class SalasComponent implements OnInit {
-  private readonly notifier: NotifierService;
+
+  private notifier: NotifierService;
+
   formularioDeAgendamentoSala: FormGroup;
 
   constructor(
-    notifierService: NotifierService,
+    private ngxNotifierService: NgxNotifierService,
+    notifier: NotifierService,
     private fb: FormBuilder,
     private salaSevice: SalasService,
     private insereAgendamentoService: InsereAgendamentoService) {
-    this.notifier = notifierService;
+    this.notifier = notifier;
   }
 
   salaModel: SalaModel[];
@@ -33,14 +39,21 @@ export class SalasComponent implements OnInit {
     this.salaSevice.getSala().subscribe(res => {
       this.salaModel = res;
     });
-
   }
 
+  limpaCampos(valor) {
+    if (valor == 1) {
+      this.formularioDeAgendamentoSala.controls['titulo'].reset();
+      this.formularioDeAgendamentoSala.controls['dataHoraInicial'].reset();
+      this.formularioDeAgendamentoSala.controls['dataHoraFinal'].reset();
+    }
+  }
   // Insere um novo agendamento
   insereAgendamentoSala() {
     const dadosFormulario = this.formularioDeAgendamentoSala.value;
     if ((Date.parse(dadosFormulario.dataHoraFinal)) < (Date.parse(dadosFormulario.dataHoraInicial))) {
-      alert('A data final não pode ser menor que a data inicial')
+      this.ngxNotifierService.createToast('A data final não pode ser menor que a data inicial', 'danger', 5000);
+
       return false;
     }
     const ch: insereAgendamentoModel = {
@@ -55,12 +68,13 @@ export class SalasComponent implements OnInit {
       if (this.insereAgendamentoModel.length == 0 || this.insereAgendamentoService == undefined) {
         this.insereAgendamentoService.insereAgendamentoDeSala(ch).subscribe(sucesso => {
           this.insereAgendamentoModel = sucesso;
-          alert('Inserido Com SUcesso!');
+          this.ngxNotifierService.createToast('Inserido Com Sucesso', 'success', 5000);
         });
       } else {
         this.insereAgendamentoModel = res;
       }
     });
+    var controle = 1;
   }
 
   // Validação dos campos do Formulário
