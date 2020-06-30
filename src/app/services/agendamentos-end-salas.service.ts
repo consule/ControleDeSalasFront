@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@a
 import { catchError, tap, map } from 'rxjs/operators';
 import { AgendamentosEndSalasModel } from '../model/agendamentosEndSalasModel';
 
-const apiUrl = 'http://localhost:52611/api/AgendamentosEndSalas';
+const apiUrl = 'http://localhost:5001/api/AgendamentosEndSalas';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

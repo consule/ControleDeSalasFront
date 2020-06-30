@@ -10,6 +10,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotifierOptions, NotifierModule } from 'angular-notifier';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxNotifierModule } from 'ngx-notifier';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -69,7 +71,7 @@ const customNotifierOptions: NotifierOptions = {
     FormsModule,
     NotifierModule,
     NotifierModule.withConfig(customNotifierOptions),
-    BrowserAnimationsModule, NgxNotifierModule
+    BrowserAnimationsModule, NgxNotifierModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
