@@ -22,7 +22,7 @@
     "@angular/router": "~8.2.13",
     "@angular/service-worker": "~8.2.13",
     "angular-notifier": "^6.0.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "ngx-notifier": "^5.0.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
